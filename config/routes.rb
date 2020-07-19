@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :home, only: [:new, :create, :show]
   resources :users
   resources :books
-  post 'books/:id/comment' => 'post_comments#create', as: 'book_post_comments'
+  post 'books/:id/comment' => 'comments#create', as: 'book_comments'
 end
