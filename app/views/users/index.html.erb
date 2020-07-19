@@ -1,0 +1,25 @@
+<% if flash[:success] %>
+  <div class="flash">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<%= render '/users/show', user: @user,book: @book %>
+
+<div class="col-xs-9">
+  <h1>Users</h1>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <th>image</th>
+      <th>name</th>
+    </thead>
+    <% @users.each do |f| %>
+    <tr>
+      <td><%= attachment_image_tag f, :profile_image, :fill, size:'60x60', format: 'jpeg', fallback: "no_image.jpg" %></td>
+      <!-- .userは、「モデル名（小文字）でデータを参照できる,：データを指定」-->
+      <td><%= f.name %></td>
+      <td><%=link_to "Show", user_path(f.id) %></td>
+      <% end %>
+    </tr>
+  </div>
+</table>
